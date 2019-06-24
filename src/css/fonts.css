@@ -1,0 +1,94 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "va";
+  src:url("../fonts/va.eot");
+  src:url("../fonts/va.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/va.woff") format("woff"),
+    url("../fonts/va.ttf") format("truetype"),
+    url("../fonts/va.svg#va") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-icon]:before {
+  font-family: "va" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "va" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-angle-down:before {
+  content: "\61";
+}
+.icon-angle-left:before {
+  content: "\62";
+}
+.icon-angle-right:before {
+  content: "\63";
+}
+.icon-angle-up:before {
+  content: "\64";
+}
+.icon-bell:before {
+  content: "\65";
+}
+.icon-exchange:before {
+  content: "\66";
+}
+.icon-eye:before {
+  content: "\67";
+}
+.icon-folder:before {
+  content: "\68";
+}
+.icon-link:before {
+  content: "\69";
+}
+.icon-plus-square:before {
+  content: "\6b";
+}
+.icon-minus-square:before {
+  content: "\6c";
+}
+.icon-qrcode:before {
+  content: "\6d";
+}
+.icon-spotify:before {
+  content: "\6e";
+}
+.icon-bars:before {
+  content: "\70";
+}
+.icon-trash:before {
+  content: "\6f";
+}
+.icon-pencil:before {
+  content: "\71";
+}
+.icon-times:before {
+  content: "\6a";
+}
+.icon-info-circle:before {
+  content: "\72";
+}
