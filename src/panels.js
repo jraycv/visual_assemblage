@@ -13,69 +13,74 @@ function Panels(props) {
     "https://api.myjson.com/bins/1ddjd9"
   );
 
-function clickItem(index,command){
-  let activeIndex = activeIndexState === index ? false : index;
-  setActiveIndexState(activeIndex);
-  setCardState(command);
-  setDisplayState(command);
-}
+  function clickItem(index, command) {
+    let activeIndex = activeIndexState === index ? false : index;
+    setActiveIndexState(activeIndex);
+    setCardState(command);
+    setDisplayState(command);
+  }
 
-function reset(){
-  setCardState(false);
-}
+  function reset() {
+    setCardState(false);
+  }
 
-let filteredData = data.filter(
+  let filteredData = data.filter(
 
-    (data)=>{
+    (data) => {
 
-      return data.title.toLowerCase().indexOf(props.search.toLowerCase()) !== -1;
-
+      return  data.title.toLowerCase().indexOf(props.search.toLowerCase()) !== -1;
+      
     }
 
-);
+  );
 
   return (
-  <>
+    <>
       {loading ? (
         <div className="loading">Loading...</div>
       ) : (
-      <ul className="panels">
-          {filteredData.map((data,index) => (
-            <li className={`display-${activeIndexState === index && cardState}`} key={index}>
-              <div className="poster" style={{ backgroundImage: `url(${data.poster})` }}>
-                <div className="cover" onClick={()=>clickItem(index,false)}>
+          <ul className="panels" id="panels">
+            {filteredData.map((data, index) => 
+            
+            (
+              <li className={`display-${activeIndexState === index && cardState}`} key={index}>
 
-                  <div className={`displayer display-type-${displayState}`}>
+                <div className="poster" style={{ backgroundImage: `url(${data.poster})` }}>
+                  <div className="cover" onClick={() => clickItem(index, false)}>
+
+                    <div className={`displayer display-type-${displayState}`}>
 
                       <div className="inner-display information">{data.info}</div>
 
                       <div className="inner-display qrcode">
-                        <img src={`http://api.qrserver.com/v1/create-qr-code/?data=${data.link}`} alt=""/>
+                        <img src={`http://api.qrserver.com/v1/create-qr-code/?data=${data.link}`} alt="" />
                         <p>Scan with your phone</p>
                       </div>
 
+                    </div>
+
                   </div>
-
                 </div>
-              </div>
 
-              <div className="info">
-                <div className="title">{data.title}</div>
-                <div className="category">{data.category}</div>
-              </div>
+                <div className="info">
+                  <div className="title">{data.title}</div>
+                  <div className="category">{data.category}</div>
+                </div>
 
-              <div className="widgets">
-                <span className="hint--top" data-hint="Info" onClick={()=>{reset(); clickItem(index,"info")}}><i className="icon-info-circle"></i></span>
-                <span className="hint--top" data-hint="Preview" onClick={()=>{props.onPreview({j:data.title, k:data.poster}); reset()}}><i className="icon-eye"></i></span>
-                <a href={data.link} className="hint--top" data-hint="Page Link" target="_new"><i className="icon-link"></i></a>
-                <span className="hint--top" data-hint="QR Code" onClick={()=>{reset(); clickItem(index,"qrcode")}}><i className="icon-qrcode"></i></span>
-                <span className="hint--top" data-hint="Files"><i className="icon-folder"></i></span>
-              </div>
-            </li>
-          ))}
-        </ul>
-      )}
-      {props.search ? <li className="nothing">No search results.</li> : '' }
+                <div className="widgets">
+                  <span className="hint--top" data-hint="Info" onClick={() => { reset(); clickItem(index, "info") }}><i className="icon-info-circle"></i></span>
+                  <span className="hint--top" data-hint="Preview" onClick={() => { props.onPreview({ j: data.title, k: data.poster }); reset() }}><i className="icon-eye"></i></span>
+                  <a href={data.link} className="hint--top" data-hint="Page Link" target="_new"><i className="icon-link"></i></a>
+                  <span className="hint--top" data-hint="QR Code" onClick={() => { reset(); clickItem(index, "qrcode") }}><i className="icon-qrcode"></i></span>
+                  {/* <span className="hint--top" data-hint="Files"><i className="icon-folder"></i></span> */}
+                </div>
+              </li>
+            )  
+            )}
+            { (filteredData.length === 0) ? <div className="nothing">No search results.</div> : '' }
+          </ul>
+        )}
+
     </>
   );
 }

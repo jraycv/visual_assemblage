@@ -51,7 +51,7 @@ function Root() {
           <div className="tools">
 
               <div className="search">
-                <input type="text" value={searchState} placeholder="Search title here..." onChange={ev => setSearchState(ev.target.value)}/>
+                <input type="text" className="no-style" value={searchState} placeholder="Search title here..." onChange={ev => setSearchState(ev.target.value)}/>
               </div>
 
           </div>
