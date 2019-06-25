@@ -13,6 +13,7 @@ function Root() {
   const [appState, setAppState] = React.useState("initial");
   const [previewAlt, setPreviewAlt] = React.useState("initial");
   const [previewImage, setPreviewImage] = React.useState("initial");
+  const [searchState, setSearchState] = React.useState("");
 
   return (
     <div className={`container display-${appState}`}>
@@ -47,13 +48,19 @@ function Root() {
 
           <div className="logo"></div>
 
-          <div className="tools"></div>
+          <div className="tools">
+
+              <div className="search">
+                <input type="text" value={searchState} placeholder="Search title here..." onChange={ev => setSearchState(ev.target.value)}/>
+              </div>
+
+          </div>
 
         </div>
 
         <div className="contents">
 
-          <Panels onPreview={({j,k})=>{setAppState("preview"); setPreviewAlt(j); setPreviewImage(k);}}/>
+          <Panels onPreview={({j,k})=>{setAppState("preview"); setPreviewAlt(j); setPreviewImage(k);}} search={searchState}/>
 
         </div>
 

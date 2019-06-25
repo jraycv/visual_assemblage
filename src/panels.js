@@ -13,7 +13,6 @@ function Panels(props) {
     "https://api.myjson.com/bins/1ddjd9"
   );
 
-
 function clickItem(index,command){
   let activeIndex = activeIndexState === index ? false : index;
   setActiveIndexState(activeIndex);
@@ -25,13 +24,23 @@ function reset(){
   setCardState(false);
 }
 
+let filteredData = data.filter(
+
+    (data)=>{
+
+      return data.title.toLowerCase().indexOf(props.search.toLowerCase()) !== -1;
+
+    }
+
+);
+
   return (
-    <>
+  <>
       {loading ? (
         <div className="loading">Loading...</div>
       ) : (
-        <ul className="panels">
-          {data.map((data,index) => (
+      <ul className="panels">
+          {filteredData.map((data,index) => (
             <li className={`display-${activeIndexState === index && cardState}`} key={index}>
               <div className="poster" style={{ backgroundImage: `url(${data.poster})` }}>
                 <div className="cover" onClick={()=>clickItem(index,false)}>
@@ -40,7 +49,10 @@ function reset(){
 
                       <div className="inner-display information">{data.info}</div>
 
-                      <div className="inner-display qrcode"><img src={`http://api.qrserver.com/v1/create-qr-code/?data=${data.link}`} alt=""/></div>
+                      <div className="inner-display qrcode">
+                        <img src={`http://api.qrserver.com/v1/create-qr-code/?data=${data.link}`} alt=""/>
+                        <p>Scan with your phone</p>
+                      </div>
 
                   </div>
 
@@ -63,6 +75,7 @@ function reset(){
           ))}
         </ul>
       )}
+      {props.search ? <li className="nothing">No search results.</li> : '' }
     </>
   );
 }

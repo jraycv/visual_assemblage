@@ -48,6 +48,12 @@ body{
           display: block;
         }
 
+        &.display-drawer .main .contents .panels li,
+        &.display-preview .main .contents .panels li{
+          -webkit-filter: blur(3px);
+          filter: blur(3px);
+        }
+
     .drawer{
       top:0;
       left:0;
@@ -156,12 +162,38 @@ body{
           background-image: url('../img/visual-assemblage-logo.svg');
         }
 
+
+        .tools{
+
+          .search{
+
+            input{
+              width:160px;
+              outline: none;
+              color:#5f5f5f;
+              font-size: 12px;
+              padding:5px 10px;
+              border:1px solid #232323;
+              background-color: #111213;
+
+              &:focus{
+                border: 1px solid #2f2f2f;
+              }
+
+            }
+            
+
+          }
+
+        }
+
       }
 
       .contents{
         padding:60px 0px 10px 0px;
 
-        .loading{
+        .loading,
+        .nothing{
           color:#333;
           height: 90vh;
           display: flex;
@@ -228,6 +260,12 @@ body{
                   img{
                     width:150px;
                     border: 5px solid #fff;
+                  }
+
+                  p{
+                    font-size: 12px;
+                    text-align: center;
+                    text-transform: uppercase;
                   }
 
                 }
